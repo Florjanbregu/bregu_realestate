@@ -1,0 +1,82 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Classy-nav -->
+    <link rel="stylesheet" href="{% static 'css/classy-nav.min.css' %}">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"> 
+    <!-- jquery-ui -->
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}"> 
+    <!-- Magnific - popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}"> 
+     <!-- Font-Awesome -->
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}"> 
+    <!-- Owl - carousel -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}"> 
+    <!-- Themify - icons -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}"> 
+
+    <!-- mixin.scss -->
+    <link rel="stylesheet" href="{% static 'scss/_mixin.scss' %}">
+    <!-- SCSS -->
+    <link rel="stylesheet" href="{% static 'scss/_responsive.scss' %}">
+    <!-- SCSS -->
+    <link rel="stylesheet" href="{% static 'scss/_theme_color.scss' %}">
+    <!-- SCSS -->
+    <link rel="stylesheet" href="{% static 'scss/_variables.scss' %}">
+    <!-- SCSS -->
+    <link rel="stylesheet" href="{% static 'scss/style.scss' %}">
+
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+    <title>Bregu Real Estate {% block title %}{% endblock %} </title>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    {% include 'partials/_topbar.html' %}
+    
+    <!-- Nav Bar-->
+    {% include 'partials/_navbar.html' %}  
+    
+    <!-- Main Content-->
+    {% block content %}    {% endblock%}
+
+    <!-- Footer -->
+    {% include 'partials/_footer.html' %}
+    
+    
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/classy-nav.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+
+</body>
+
+</html>

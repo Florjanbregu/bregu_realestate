@@ -1,0 +1,19 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block branding %}
+
+<h1 id="head">
+    <img src="{% static 'img/core-img/logog.png' %}" alt="Bregu Real Project" height="30"
+    width="100" class="brand_img"> Hapësira e Administratorit
+</h1>
+
+{% endblock %}
+
+<!-- Si te shtojme CSS -->
+{% block extrastyle %}
+
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+{% endblock %}

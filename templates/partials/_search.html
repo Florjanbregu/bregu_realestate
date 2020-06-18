@@ -1,0 +1,199 @@
+
+{% load static %}
+
+
+<!-- ##### Advance Search Area Start ##### -->
+
+<div class="south-search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="advanced-search-form">
+                    <!-- Search Title -->
+                    <div class="search-title">
+                        <p>Kërko Shtëpinë Tuaj</p>
+                    </div>
+                    <!-- Search Form -->
+                    <form action="{% url 'search' %}">
+                        {% csrf_token %}
+                        <div class="row">
+    
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="keywords" placeholder="Fjalë Kyce">
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                    <select multiple class="form-control" name="cities">
+                                        <option selected="true" disabled="disabled">Qytetet</option>
+                                        <!-- Krijojme nje loop i cili shkon dhe merr listings nga databaza -->
+                                        {% for city in cities %}
+                                        <!--output the options with a value -->
+                                        <option> {{ city.name_of_cities }} </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                    <select class="form-control" id="catagories">
+                                        <option>Kategoritë</option>
+                                        <option>Apartment</option>
+                                        <option>Bar</option>
+                                        <option>Farm</option>
+                                        <option>House</option>
+                                        <option>Store</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                    <select class="form-control" id="offers">
+                                        <option>Ofertat</option>
+                                        <option>100% OFF</option>
+                                        <option>75% OFF</option>
+                                        <option>50% OFF</option>
+                                        <option>25% OFF</option>
+                                        <option>10% OFF</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-xl-3">
+                                <div class="form-group">
+                                    <select class="form-control" name="listing1">
+                                        <option selected="true" disabled="disabled">Pronat</option>
+                                        <!-- Krijojme nje loop i cili shkon dhe merr listings nga databaza -->
+                                        {% for listing in listings %}
+                                         <!--output the options with a value -->
+                                            <option> {{ listing.title }} </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-xl-2">
+                                <div class="form-group">
+                                    <select multiple class="form-control" name="bedrooms">
+                                        <option selected="true" disabled="disabled">Dhomat</option>
+                                        <!-- Krijojme nje loop i cili shkon dhe merr bedrooms nga databaza -->
+                                        {% for bedroom in bedrooms %}
+                                         <!--output the options with a value -->
+                                            <option> {{ bedroom.number_of_bedrooms }} </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-4 col-xl-2">
+                                <div class="form-group">
+                                    <select class="form-control" name="bathrooms">
+                                        <option selected="true" disabled="disabled">Tualete</option>
+                                         <!-- Krijojme nje loop i cili shkon dhe merr bedrooms nga file bedrooms_choices -->
+                                         {% for bathroom in bathrooms %}
+                                         <!--output the options with a value -->
+                                        <option> {{ bathroom.number_of_bathrooms }} </option>
+                                         {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-8 col-lg-12 col-xl-5 d-flex">
+                                <!-- Space Range -->
+                                <div class="slider-range">
+                                    <div data-min="120" data-max="820" data-unit=" sq. ft" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="120" data-value-max="820">
+                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    </div>
+                                    <div class="range">120 m2 - 820 m2</div>
+                                </div>
+    
+                                <!-- Distance Range -->
+                                <div class="slider-range">
+                                    <div data-min="10" data-max="1300" data-unit=" mil" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1300">
+                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    </div>
+                                    <div class="range">10 km - 1300 km</div>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 search-form-second-steps">
+                                <div class="row">
+    
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control" id="types">
+                                                <option>All Types</option>
+                                                <option>Apartment <span>(30)</span></option>
+                                                <option>Land <span>(69)</span></option>
+                                                <option>Villas <span>(103)</span></option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control" id="catagories2">
+                                                <option>All Catagories</option>
+                                                <option>Apartment</option>
+                                                <option>Bar</option>
+                                                <option>Farm</option>
+                                                <option>House</option>
+                                                <option>Store</option>
+                                            </select>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control" name="Actions">
+                                                <option selected="true" disabled="disabled">Llojet e Shtëpive</option>
+                                                <!-- Krijojme nje loop i cili shkon dhe merr actions nga databaza -->
+                                                {% for action in actions %}
+                                                <!--output the options with a value -->
+                                                    <option> {{ action.name_of_actions }} </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-12 col-md-4 col-lg-3">
+                                        <div class="form-group">
+                                            <select class="form-control" id="city2">
+                                                <option>All City</option>
+                                                <option>City 1</option>
+                                                <option>City 2</option>
+                                                <option>City 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+    
+                            <div class="col-12 d-flex justify-content-between align-items-end">
+                                <!-- More Filter -->
+                                <div class="more-filter">
+                                    <a href="#" id="moreFilter">+ Më Shumë</a>
+                                </div>
+                                <!-- Submit -->
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn south-btn">Kërko</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- ##### Advance Search Area End ##### -->

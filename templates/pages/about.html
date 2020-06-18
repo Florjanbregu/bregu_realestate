@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+<!-- Titulli dinamik -->
+{% block title %} | Rreth Nesh {% endblock %}
+
+{% block content %}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img" style="background-image: url(static/img/bg-img/hero1.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    <h3 class="breadcumb-title">Rreth Nesh</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+
+ <!-- ##### About Content Wrapper Start ##### -->
+ <section class="about-content-wrapper section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
+                    <h2>Ne kërkojme Shtëpinë Perfekte</h2>
+                    <p>Me BREGU Real Estate gjetja e shtëpisë bëhet më e thjeshtë</p>
+                </div>
+                <div class="about-content">
+                    <img class="wow fadeInUp" data-wow-delay="350ms" src="static/img/bg-img/about.jpg" alt="">
+                    <p class="wow fadeInUp" data-wow-delay="450ms">Këtu gjeni shtëpinë që ju nevojitet!</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
+                    <h2>Lista e Pronave  </h2>
+                    <p>Zgjidhni BREGU Real Estate</p>
+                </div>
+
+                {% if listings %}
+        
+                    <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
+                        {% for listing in listings %}
+
+                            <!-- Single Slide -->
+                            <div class="single-featured-property">
+                                <a class="navbar-brand" href="{% url 'listing' listing.id %}">
+                                    <!-- Property Thumbnail -->
+                                    <div class="property-thumb">
+                                        <img src="{{ listing.photo_main.url }}" alt="">
+
+                                        <div class="tag">
+                                            <span>{{ listing.action }}</span>
+                                        </div>
+                                        <div class="list-price">
+                                            <p>{{ listing.price | intcomma }}</p>
+                                        </div>
+                                    </div>
+                                    <!-- Property Content -->
+                                    <div class="property-content">
+                                        <h5>{{ listing.title }}</h5>
+                                        <p class="location"><img src="static/img/icons/location.png" alt="">{{ listing.city }} {{ listing.state }} {{ listing.zipcode }}</p>
+                                        <p>{{ listing.description }}</p>
+                                        <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                            <div class="new-tag">
+                                                <img src="static/img/icons/new.png" alt="">
+                                            </div>
+                                            <div class="bathroom">
+                                                <img src="static/img/icons/bathtub.png" alt="">
+                                                <span>{{ listing.bathrooms }}</span>
+                                            </div>
+                                            <div class="garage">
+                                                <img src="static/img/icons/garage.png" alt="">
+                                                <span>{{ listing.garage }}</span>
+                                            </div>
+                                            <div class="space">
+                                                <img src="static/img/icons/space.png" alt="">
+                                                <span>{{ listing.sqft }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <!--nese ska listings ne data base do te shfaqim nje mesazh -->
+                <div class="col-md-12">
+                <p>Asnjë Pronë e Vlefshme</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### About Content Wrapper End ##### -->
+
+<!-- ##### Call To Action Area Start ##### -->
+{% include 'partials/_samepage.html' %}
+<!-- ##### Call To Action Area End ##### -->
+
+<!-- ##### Meet The Team Area Start ##### -->
+<section class="meet-the-team-area section-padding-100-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                        <h2>Takim me Agjentet</h2>
+                        <p>Cdo pyetje e juaja eshte prioritet per ne!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="testimonials-slides owl-carousel wow fadeInUp" data-wow-delay="500ms"></div>
+                {% if realtors %}
+                   {% for realtor in realtors%}
+                        <!-- Single Team Member -->
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="250ms">
+                                <!-- Team Member Thumb -->
+                                <div class="team-member-thumb">
+                                    <img src="{{ realtor.photo.url }}" alt="">
+                                </div>
+                                <!-- Team Member Info -->
+                                <div class="team-member-info">
+                                    <div class="section-heading">
+                                        <img src="static/img/icons/prize.png" alt="">
+                                        <h2>{{ realtor.name }}</h2>
+                                        <p>{{Agjent}}</p>
+                                    </div>
+                                    <div class="address">
+                                        <h6><img src="static/img/icons/phone-call.png" alt=""> {{ realtor.phone }} </h6>
+                                        <h6><img src="static/img/icons/envelope.png" alt=""> {{ realtor.email }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+<!-- ##### Meet The Team Area End ##### -->
+
+
+{% endblock %}
